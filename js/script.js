@@ -1,3 +1,5 @@
+const sectionCenter = document.querySelector(".menu-list");
+
 const menu = [
   {
     id: 1,
