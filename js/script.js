@@ -1,5 +1,6 @@
 const sectionCenter = document.querySelector(".menu-list");
 
+
 window.addEventListener("DOMContentLoaded", () => {
   console.log("This is the data");
   getAllMenu();
