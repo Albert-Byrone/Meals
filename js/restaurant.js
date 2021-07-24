@@ -1,5 +1,7 @@
 const sectionCenter = document.querySelector(".restaurants");
 
+const filter = document.querySelector(".filter-btn");
+console.log(filterBtn);
 window.addEventListener("DOMContentLoaded", () => {
   console.log("Loaded");
   getRestaurants();
@@ -21,8 +23,8 @@ let getRestaurants = () => {
       console.log(item);
       console.log(item.location);
       console.log(item.image);
-      return `<div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
-      <a href="" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
+      return `<div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4" >
+      <a href="" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden" style="background-color:#BBED9A">
           <div class="relative pb-48 overflow-hidden">
               <img class="absolute inset-0 h-full w-full object-cover"
                   src=${item.image}
