@@ -1,11 +1,15 @@
 const sectionCenter = document.querySelector(".restaurants");
 
-const filter = document.querySelector(".filter-btn");
+const filterBtn = document.querySelector(".filter-btn");
 console.log(filterBtn);
+
+// load all the items
 window.addEventListener("DOMContentLoaded", () => {
   console.log("Loaded");
   getRestaurants();
 });
+
+// filter items
 
 let getRestaurants = () => {
   var settings = {
@@ -33,7 +37,7 @@ let getRestaurants = () => {
           <div class="p-4">
               <span
                   class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">${item.restauranttype}</span>
-              <h2 class="mt-2 mb-2  font-bold">${item.businessname}</h2>
+              <h2 class="mt-2 mb-2  font-bold" style="color:#EAAB1B; text-transform:capitalize;">${item.businessname}</h2>
               <p class="text-sm">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec
                   ullamcorper
                   nulla non metus auctor fringilla.</p>
@@ -42,16 +46,13 @@ let getRestaurants = () => {
                       class="font-bold text-xl">${item.location}</span>&nbsp;<span class="text-sm font-semibold"></span>
               </div>
           </div>
-          <div class="p-4 border-t border-b text-xs text-gray-700">
+          <div class="p-4 border-t border-b text-xs text-gray-700" style="background-color:#FFD77C;">
               <span class="flex items-center mb-1">
                   <i class="far fa-clock fa-fw mr-2 text-gray-900"></i> 3 Tage
               </span>
               <span class="flex items-center">
                   <i class="far fa-address-card fa-fw text-gray-900 mr-2"></i>  ${item.address}
               </span>
-          </div>
-          <div class="p-4 flex items-center text-sm text-gray-600">
-          ${item.reviews}
           </div>
       </a>
   </div>`;
@@ -60,3 +61,8 @@ let getRestaurants = () => {
     sectionCenter.innerHTML = restaurant;
   });
 };
+filterBtn.forEach(function (btn) {
+  btn.addEventListener("click", (e) => {
+    console.log(e.currentTarget.dataset);
+  });
+});
