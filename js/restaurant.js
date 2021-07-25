@@ -1,15 +1,11 @@
 const sectionCenter = document.querySelector(".restaurants");
 
-const filterBtn = document.querySelector(".filter-btn");
-console.log(filterBtn);
+const filterBtn = document.querySelectorAll(".filter-btn");
 
 // load all the items
 window.addEventListener("DOMContentLoaded", () => {
-  console.log("Loaded");
   getRestaurants();
 });
-
-// filter items
 
 let getRestaurants = () => {
   var settings = {
@@ -19,14 +15,28 @@ let getRestaurants = () => {
   };
 
   $.ajax(settings).done(function (response) {
-    console.log(response);
     let values = Object.values(response);
     let restaurants = values[1];
 
+    // filter items
+    filterBtn.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const category = e.currentTarget.dataset.category;
+        console.log(category);
+        const menuCategory = restaurants.filter((menuItem) => {
+          console.log(menuItem.restauranttype);
+          if (menuItem.restauranttype === category) {
+            return menuItem;
+          }
+        });
+        // console.log(menuCategory);
+        if (category === "all") {
+          getRestaurants();
+        }
+      });
+    });
+
     let restaurant = restaurants.map((item) => {
-      console.log(item);
-      console.log(item.location);
-      console.log(item.image);
       return `<div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4" >
       <a href="" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden" style="background-color:#BBED9A">
           <div class="relative pb-48 overflow-hidden">
@@ -61,8 +71,3 @@ let getRestaurants = () => {
     sectionCenter.innerHTML = restaurant;
   });
 };
-filterBtn.forEach(function (btn) {
-  btn.addEventListener("click", (e) => {
-    console.log(e.currentTarget.dataset);
-  });
-});
