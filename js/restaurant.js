@@ -57,7 +57,10 @@ let displayRestaurantItems = (restourantItem) => {
 // load all the items
 window.addEventListener("DOMContentLoaded", () => {
   displayRestaurantItems(rest);
+  displayMenuButtons();
+});
 
+let displayMenuButtons = () => {
   const restCategories = rest.reduce(
     (values, item) => {
       if (!values.includes(item.restauranttype)) {
@@ -94,4 +97,4 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-});
+};
